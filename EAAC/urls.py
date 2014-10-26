@@ -11,6 +11,7 @@ urlpatterns = patterns('',
     url(r'^admin/',     include(admin.site.urls)),
     url(r'^timetable/', include('timetable.urls', namespace='timetable')),
     url(r'^gallery/', include('gallery.urls', namespace='gallery')),
+    url(r'^instructors/', include('instructors.urls', namespace='instructors')),
     (r'^accounts/', include('allauth.urls')),
     url (r'^accounts/profile/', include('accounts.urls', namespace='profile')),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
