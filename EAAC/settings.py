@@ -45,11 +45,9 @@ INSTALLED_APPS = (
     'allauth.account',
     'allauth.socialaccount',
     # providers you want to enable for allauth:
-    # 'allauth.socialaccount.providers.amazon',
     'allauth.socialaccount.providers.facebook',
-    # 'allauth.socialaccount.providers.github',
-    # 'allauth.socialaccount.providers.google',
-    # 'allauth.socialaccount.providers.twitter',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.twitter',
     # apps for EAAC
     'website',
     'accounts',
@@ -141,11 +139,17 @@ ACCOUNT_PASSWORD_MIN_LENGTH = 6
 SOCIALACCOUNT_QUERY_EMAIL = True
 
 SOCIALACCOUNT_PROVIDERS = \
- { 'facebook':
-     { 'SCOPE': ['email'],
-     #'AUTH_PARAMS': { 'auth_type': 'reauthenticate'},
-     'METHOD': 'js_sdk' ,
-     }
- }
+    {'facebook':
+        {'SCOPE': ['email'],
+         #'AUTH_PARAMS': { 'auth_type': 'reauthenticate'},
+         'METHOD': 'js_sdk',
+         },
+     'twitter':
+        {},
+     'google':
+        {'SCOPE': ['profile', 'email'],
+         'AUTH_PARAMS': { 'access_type': 'online' } }
+    }
+
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
