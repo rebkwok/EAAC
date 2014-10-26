@@ -11,7 +11,7 @@ class Category(models.Model):
 
 
 class Image(models.Model):
-    photo = models.ImageField(upload_to='gallery')
+    photo = models.ImageField()
     category = models.ForeignKey(Category)
     caption = models.CharField(max_length=255, null=True, blank=True)
 
