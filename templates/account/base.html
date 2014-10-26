@@ -2,26 +2,29 @@
 
 {% load url from future %}
 
-    {% block body %}
 
-        {% if messages %}
-        <div>
-          <strong>Messages:</strong>
-          <ul>
-        {% for message in messages %}
-        <li>{{message}}</li>
-        {% endfor %}
-          </ul>
-        </div>
-        {% endif %}
+{% block body %}
+<div class="small-margin">
+    {% if messages %}
+    <div>
+      <strong>Messages:</strong>
+      <ul>
+    {% for message in messages %}
+    <li>{{message}}</li>
+    {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
 
 
-        {% block content %}
-        {% endblock %}
+    {% block content %}
+    {% endblock %}
 
-    {% endblock body %}
+</div>
 
-    {% block extra_body %}
-    {% endblock extra_body %}
+{% endblock body %}
+
+{% block extra_body %}
+{% endblock extra_body %}
 
 
