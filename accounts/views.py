@@ -1,3 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse, get_object_or_404
 
-# Create your views here.
+
+def profile(request):
+
+    return render(request, 'account/profile.html', {'section': 'home'})

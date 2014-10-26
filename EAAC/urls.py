@@ -12,4 +12,5 @@ urlpatterns = patterns('',
     url(r'^timetable/', include('timetable.urls', namespace='timetable')),
     url(r'^gallery/', include('gallery.urls', namespace='gallery')),
     (r'^accounts/', include('allauth.urls')),
+    url (r'^accounts/profile/', include('accounts.urls', namespace='profile')),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
