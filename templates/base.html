@@ -51,14 +51,14 @@
                     <ul class="nav navbar-nav pull-left">
                         <li {% if section == 'home' %}class="active"{% endif %}><a href="{% url 'website:home' %}">Home</a></li>
                         <li {% if section == 'timetable' %}class="active"{% endif %}><a href="{% url 'timetable:timetable' %}">Timetable</a></li>
-                        <li {% if section == 'instructors' %}class="active"{% endif %}><a href="#">Instructors</a></li>
-                        <li {% if section == 'gallery' %}class="active"{% endif %}><a href="#">Gallery</a></li>
+                        <li {% if section == 'instructors' %}class="active"{% endif %}><a href="{% url 'instructors:instructors' %}">Instructors</a></li>
+                        <li {% if section == 'gallery' %}class="active"{% endif %}><a href="{% url 'gallery:gallery' %}">Gallery</a></li>
                         {% if user.is_authenticated %}
-                        <li><a href="{% url 'account_email' %}">Change E-mail</a></li>
-                        <li><a href="{% url 'account_logout' %}">Sign Out</a></li>
+                        <li class="active"><a href="{% url 'account_email' %}">Change E-mail</a></li>
+                        <li class="active"><a href="{% url 'account_logout' %}">Sign Out</a></li>
                         {% else %}
-                        <li><a href="{% url 'account_login' %}">Sign In</a></li>
-                        <li><a href="{% url 'account_signup' %}">Sign Up</a></li>
+                        <li class="active"><a href="{% url 'account_login' %}">Sign In</a></li>
+                        <li class="active"><a href="{% url 'account_signup' %}">Sign Up</a></li>
                         {% endif %}
                     </ul>
                 </div><!--/.nav-collapse -->
@@ -93,7 +93,7 @@
                 </div>
                 <!--
                 <div class="col-sm-6 footer-logo pull-right">
-                    <img class="pull-right img-responsive"src="{% static "website/images/splash_footer.png" %}">
+                    <img class="pull-right img-responsive"src="{% static "images/splash_footer.png" %}">
                 </div>-->
             </div>
         </div>
