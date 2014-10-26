@@ -1,0 +1,102 @@
+{% load static %}
+{% load url from future %}
+{% load socialaccount %}
+{% providers_media_js %}
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, minumum-scale=1">
+        <title>EAAC
+        {% block head_title %}{% endblock %}
+        </title>
+        {% block extra_head %}
+        {% endblock %}
+
+        <link rel="icon"
+        type="image/png"
+        href="{% static "website/images/hoop.png" %}">
+
+        <!-- Bootstrap core CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <!-- Bootstrap theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <!-- Custom styles --->
+        <link href="{% static "website/css/custom.css" %}" rel="stylesheet">
+
+
+    </head>
+
+  <body>
+
+
+      <div class="wrap">
+        <!-- Fixed navbar -->
+        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" rel="home" href="/" title="EAAC">
+                        <!-- <img class="nav-logo" src="{% static "website/images/splash_nav.png" %}"> -->
+                    </a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav pull-left">
+                        <li {% if section == 'home' %}class="active"{% endif %}><a href="{% url 'website:home' %}">Home</a></li>
+                        <li {% if section == 'timetable' %}class="active"{% endif %}><a href="{% url 'timetable:timetable' %}">Timetable</a></li>
+                        <li {% if section == 'instructors' %}class="active"{% endif %}><a href="#">Instructors</a></li>
+                        <li {% if section == 'gallery' %}class="active"{% endif %}><a href="#">Gallery</a></li>
+                        {% if user.is_authenticated %}
+                        <li><a href="{% url 'account_email' %}">Change E-mail</a></li>
+                        <li><a href="{% url 'account_logout' %}">Sign Out</a></li>
+                        {% else %}
+                        <li><a href="{% url 'account_login' %}">Sign In</a></li>
+                        <li><a href="{% url 'account_signup' %}">Sign Up</a></li>
+                        {% endif %}
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </div>
+
+    {% block body %}
+        {% block content %}
+              <div class="container-fluid">
+                <p>You need to define a content block!</p>
+            </div>
+        {% endblock %}
+
+    {% endblock %}
+
+
+  </body>
+
+<!--/.footer -->
+        <div class="push"></div>
+    </div> <!--/end of page .wrap -->
+
+    <div class="footer">
+        <div class="container-fluid">
+            <div class="row footer_box">
+                <div class="col-sm-6 footer-fb pull-left">
+                    <div class="fb-like"
+                         data-layout="standard"
+                         data-action="like" data-show-faces="true" data-share="true">
+                    </div>
+                    <div class="footer-credit">Site developed by <a href="https://twitter.com/rebkwok" target="_blank" style="color: #0B0B61">Becky Smith</a></div>
+                </div>
+                <!--
+                <div class="col-sm-6 footer-logo pull-right">
+                    <img class="pull-right img-responsive"src="{% static "website/images/splash_footer.png" %}">
+                </div>-->
+            </div>
+        </div>
+    </div>
+
+</html>
