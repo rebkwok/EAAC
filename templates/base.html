@@ -53,11 +53,11 @@
                         <li {% if section == 'instructors' %}class="active-nav"{% endif %}><a href="{% url 'instructors:instructors' %}">Instructors</a></li>
                         <li {% if section == 'gallery' %}class="active-nav"{% endif %}><a href="{% url 'gallery:gallery' %}">Gallery</a></li>
                         {% if user.is_authenticated %}
-                        <li><a href="{% url 'account_email' %}">Change E-mail</a></li>
-                        <li><a href="{% url 'account_logout' %}">Sign Out</a></li>
+                        <li class="active-nav-login"><a href="{% url 'account_email' %}">Change E-mail</a></li>
+                        <li class="active-nav-login"><a href="{% url 'account_logout' %}">Sign Out</a></li>
                         {% else %}
-                        <li><a href="{% url 'account_login' %}">Sign In</a></li>
-                        <li><a href="{% url 'account_signup' %}">Sign Up</a></li>
+                        <li class="active-nav-login"><a href="{% url 'account_login' %}">Sign In</a></li>
+                        <li class="active-nav-login"><a href="{% url 'account_signup' %}">Sign Up</a></li>
                         {% endif %}
                     </ul>
                 </div><!--/.nav-collapse -->
