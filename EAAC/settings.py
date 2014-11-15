@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_extensions',
+    'django_tables2',
     # The Django sites framework is required for allauth
     'django.contrib.sites',
     'allauth',
@@ -112,7 +113,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.contrib.auth.context_processors.auth",
     "django.core.context_processors.media",
 
-    # Required by allauth template tags
+    # Required by allauth template tags and django-tables2
     "django.core.context_processors.request",
 
     # allauth specific context processors

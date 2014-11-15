@@ -25,3 +25,6 @@ class Instructor(models.Model):
                 this.photo.delete(save=False)
         except: pass # when new photo then we do nothing, normal case
         super(Instructor, self).save(*args, **kwargs)
+    
+    def __str__(self):
+        return self.name

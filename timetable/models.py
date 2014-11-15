@@ -30,7 +30,9 @@ class Discipline(models.Model):
         except:
             pass # when new photo then we do nothing, normal case
         super(Discipline, self).save(*args, **kwargs)
-
+    
+    def __str__(self):
+        return self.name
 
 class Location(models.Model):
     """
@@ -38,28 +40,32 @@ class Location(models.Model):
     """
     room = models.CharField(max_length=255)
     area = models.CharField(max_length=255)
-
+    
+    def __str__(self):
+        return self.room + ", " + self.area
 
 
 class Session(models.Model):
     """
     Timetabled session, used to manage individual classes and other timetabled sessions
     """
-    level = models.CharField(max_length=255, default="All levels")
-    session_date = models.DateTimeField('session date')
-    start_time = models.DateTimeField('start time')
-    end_time = models.DateTimeField('end time')
+    level = models.CharField(max_length=255, default="All levels", null=True, blank=True)
+    session_date = models.DateField('date')
+    start_time = models.TimeField('start')
+    end_time = models.TimeField('end')
     instructor = models.ForeignKey(Instructor, null=True, blank=True)
-    discipline = models.ForeignKey(Discipline)
+    discipline = models.ForeignKey(Discipline, null=True, blank=True)
     session_type = models.CharField(max_length=12, choices=SESSION_TYPE_CHOICES, default=CLASS)
-    location = models.ForeignKey(Location)
-    spaces = models.BooleanField('spaces available', default=True)
+    location = models.ForeignKey(Location, null=True, blank=True)
+    spaces = models.NullBooleanField('spaces available', default=True, null=True)
 
     def set_booking(self):
         if self.session_type is not CLASS:
             self.spaces = False
 
+    def __str__(self):
 
+        return str(self.discipline)
 
 
 
